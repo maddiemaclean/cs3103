@@ -1,11 +1,11 @@
 2. Create a stored procedure to add quotes to the database
 
 DELIMITER //
-DROP PROCEDURE IF EXISTS "addQuote" //
+DROP PROCEDURE IF EXISTS addQuote //
 
 CREATE PROCEDURE addQuote ( textIn VARCHAR (250))
 begin
-    INSERT INTO QUOTES (textIn)
+    INSERT INTO Quotes (quote)
     VALUES (textIn);
 end//
 DELIMITER ;
@@ -13,10 +13,10 @@ DELIMITER ;
 3. Create a stored procedure to randonly access a quote from the table
 
 DELIMITER //
-DROP PROCEDURE IF EXISTS "getQuote" //
+DROP PROCEDURE IF EXISTS getQuote //
 
 CREATE PROCEDURE getQuote ()
 begin
-    SELECT* FROM quotes ORDER by RAND() LIMIT 1;
+    SELECT* FROM Quotes ORDER by RAND() LIMIT 1;
 end//
 DELIMITER ;
