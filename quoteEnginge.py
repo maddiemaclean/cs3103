@@ -21,11 +21,12 @@ def getQuote():
     try:
             cursor = dbConnection.cursor()
             cursor.callproc(sql)
-            result = cursor.fetch()
+            result = cursor.fetchall()
             if result:
-                print("""<body>
+                quoteText = result[0]['quote']
+                print(f"""<body>
                              <h1>Random Quote</h1>
-                             <p>"{result}" </p>
+                             <p>"{quoteText}" </p>
                           </body>""")
 
     except pymysql.MySQLError as e:
@@ -37,3 +38,5 @@ def getQuote():
     finally:
         cursor.close()
         dbConnection.close()
+
+getQuote()
